@@ -20,7 +20,7 @@ function App() {
         placeholder="Search..."
         onChange={filterChange}
       />
-      <ul className="list">
+      {/* <ul className="list">
         {Users.filter((user) =>
           user.first_name.toLowerCase().includes(query)
         ).map((data) => (
@@ -28,7 +28,8 @@ function App() {
             {data.first_name}
           </li>
         ))}
-      </ul>
+      </ul> */}
+      <Table data={Users} />
     </div>
   );
 }
