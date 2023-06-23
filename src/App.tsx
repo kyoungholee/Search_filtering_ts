@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Users } from "./user";
 
 function App() {
+  const [query, setQuery] = useState("");
+
+  const filterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  console.log(query);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label htmlFor="text"></label>
+      <input
+        type="text"
+        className="search"
+        id="text"
+        placeholder="Search"
+        onChange={filterChange}
+      />
+      <ul className="list">
+        {Users.map((data) => (
+          <li className="listItem">{data.first_name}</li>
+        ))}
+      </ul>
     </div>
   );
 }
